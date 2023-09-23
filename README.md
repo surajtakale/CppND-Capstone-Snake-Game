@@ -1,7 +1,11 @@
 # CPPND: Capstone Snake Game Example
 
 This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+## ORIGINAL VERSION
+<img src="snake_game_old.gif"/>
 
+
+## NEW VERSION
 <img src="snake_game.gif"/>
 
 The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
@@ -29,6 +33,17 @@ In this project, you can build your own C++ application or extend this Snake gam
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## NEW UPDATES
+1. ADDED MAINTAINING HIGHEST SCORE ACHIVED BY PLAYER.
+    This feature will store the high score on the local machine so that every time the player scores higer than the previous then it will store the score in the local machine so next time it will be easy for the player to beat that score...!
+2. Added super food :
+    This feature will introduce a super food(green) in the game in between normal(yellow) food.
+    This gives player an advantage of getting more score by eating this food in between.
+    Special Challenge is such that this super food will give more point, depending upon how quick player is able to eat it.
+    if player eats with in 1 sec the he/she will get 5 points.
+    accordingly after each second the points will be reduced by 1
+    after 5 secondes the value of super food will be reduced to 1 point.
 
 
 ## CC Attribution-ShareAlike 4.0 International

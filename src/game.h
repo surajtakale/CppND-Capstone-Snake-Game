@@ -6,6 +6,8 @@
 #include "controller.h"
 #include "renderer.h"
 #include "snake.h"
+#include <chrono>
+#include <memory>
 
 class Game {
  public:
@@ -18,6 +20,9 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
+  bool isSuperFood = false;
+  std::shared_ptr<std::chrono::system_clock::time_point> superFoodPlacedOn; // = std::chrono::system_clock::now();
+
 
   std::random_device dev;
   std::mt19937 engine;
@@ -27,7 +32,10 @@ class Game {
   int score{0};
 
   void PlaceFood();
+  void PlaceSuperFood();
   void Update();
+  int calculateSuperFoodScore(const std::shared_ptr<std::chrono::system_clock::time_point>& timestamp);
+
 };
 
 #endif

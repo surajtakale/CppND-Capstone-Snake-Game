@@ -1,6 +1,7 @@
 #include "game.h"
 #include <iostream>
 #include "SDL.h"
+#include <chrono>
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -25,7 +26,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, food, isSuperFood);
 
     frame_end = SDL_GetTicks();
 
@@ -60,6 +61,26 @@ void Game::PlaceFood() {
     if (!snake.SnakeCell(x, y)) {
       food.x = x;
       food.y = y;
+      isSuperFood = false;
+      return;
+    }
+  }
+}
+
+void Game::PlaceSuperFood() {
+  int x, y;
+  while (true) {
+    x = random_w(engine);
+    y = random_h(engine);
+    // Check that the location is not occupied by a snake item before placing
+    // food.
+    if (!snake.SnakeCell(x, y)) {
+      food.x = x;
+      food.y = y;
+      isSuperFood = true;
+      superFoodPlacedOn = std::make_shared<std::chrono::system_clock::time_point>(
+        std::chrono::system_clock::now()
+    );
       return;
     }
   }
@@ -75,8 +96,27 @@ void Game::Update() {
 
   // Check if there's food over here
   if (food.x == new_x && food.y == new_y) {
-    score++;
-    PlaceFood();
+    if (isSuperFood){
+      
+      std::cout << "You Ate A Super Food ";// << std::endl;
+
+      // score = score + 2;
+      score = score + calculateSuperFoodScore(superFoodPlacedOn);
+    }else{
+      std::cout << "food is normal food" << std::endl;
+      score = score + 1;
+    }
+    
+    if(score != 0 && score % 5 == 0){
+      std::cout << "now placing food is super food" << std::endl;
+      PlaceSuperFood();
+    }
+    else{
+      std::cout << "now placing food is Normal food" << std::endl;
+      isSuperFood = false;
+      PlaceFood();
+    }
+    
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;
@@ -85,3 +125,24 @@ void Game::Update() {
 
 int Game::GetScore() const { return score; }
 int Game::GetSize() const { return snake.size; }
+
+int Game::calculateSuperFoodScore(const std::shared_ptr<std::chrono::system_clock::time_point>& timestamp) {
+    if (!timestamp) {
+        std::cout << "Error: Invalid timestamp pointer." << std::endl;
+        return 0; // Return a zero value to indicate an error.
+    }
+
+    std::chrono::system_clock::time_point currentTime = std::chrono::system_clock::now();
+    std::chrono::duration<int> elapsed_seconds = std::chrono::duration_cast<std::chrono::seconds>(currentTime - *timestamp);
+    int seconds = elapsed_seconds.count();
+    std::cout << "Within seconds: " << seconds;
+    if (seconds < 1) {
+        seconds = 1;
+    } else if (seconds > 5) {
+        seconds = 5;
+    }
+    std::cout << " Points Got : " << 6 - seconds<< std::endl;
+    // Calculate return the output value inversely proportional to the input
+    
+    return 6 - seconds;
+}
