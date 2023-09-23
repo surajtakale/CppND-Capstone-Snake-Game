@@ -35,9 +35,13 @@ In this project, you can build your own C++ application or extend this Snake gam
 4. Run it: `./SnakeGame`.
 
 ## NEW UPDATES
+
 1. ADDED MAINTAINING HIGHEST SCORE ACHIVED BY PLAYER.
+
     This feature will store the high score on the local machine so that every time the player scores higer than the previous then it will store the score in the local machine so next time it will be easy for the player to beat that score...!
+
 2. Added super food :
+
     This feature will introduce a super food(green) in the game in between normal(yellow) food.
     This gives player an advantage of getting more score by eating this food in between.
     Special Challenge is such that this super food will give more point, depending upon how quick player is able to eat it.
