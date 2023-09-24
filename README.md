@@ -40,16 +40,22 @@ In this project, you can build your own C++ application or extend this Snake gam
 
     This feature will store the high score on the local machine so that every time the player scores higer than the previous then it will store the score in the local machine so next time it will be easy for the player to beat that score...!
 
-2. Added super food :
+2. ADDED SUPER FOOD FOR MORE FUN:
 
     This feature will introduce a super food(green) in the game in between normal(yellow) food.
     This gives player an advantage of getting more score by eating this food in between.
     Special Challenge is such that this super food will give more point, depending upon how quick player is able to eat it.
     if player eats with in 1 sec the he/she will get 5 points.
-    accordingly after each second the points will be reduced by 1
+    accordingly after each second the points that player can earn will be reduced by 1
     after 5 secondes the value of super food will be reduced to 1 point.
 
-3. Player Can Now Pause The Game By Pressing The SpaceBar.
+    if super food is ate  <= 1 sec then point will be 5
+    if super food is ate 1 > & <= 2 sec then point will be 4
+    if super food is ate 2 > & <= 3 sec then point will be 3
+    if super food is ate 3 > & <= 4 sec then point will be 2
+    LIKEWISE...
+
+3. PLAYER CAN NOW PAUSE/RESUME THE GAME BY PRESSING THE SPACE BAR.
 
     While playing the game if required player can pause the game by pressing the space bar and then again press the space bar the game will resume..!
 
