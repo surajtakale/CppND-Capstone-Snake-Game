@@ -93,6 +93,8 @@ void Game::Update(Renderer *renderer) {
     (*renderer).setGamePausedTitle();
     return;
   }
+  bool isSlowingSpeed = false;
+
   if (!snake.alive) return;
 
   snake.Update();
@@ -107,7 +109,15 @@ void Game::Update(Renderer *renderer) {
       std::cout << "You Ate A Super Food ";// << std::endl;
 
       // score = score + 2;
-      score = score + calculateSuperFoodScore(superFoodPlacedOn);
+      auto new_score = calculateSuperFoodScore(superFoodPlacedOn);
+      if(new_score > 3){
+        std::cout << "High Score achived in super food so reducing score..!" << std::endl;
+        std::thread affectSpeed(TimerThread, &snake, (snake.speed + 0.02));
+        snake.speed = 0.02;
+        isSlowingSpeed = true;
+        affectSpeed.detach();
+      }
+      score = score + new_score;
     }else{
       std::cout << "food is normal food" << std::endl;
       score = score + 1;
@@ -125,7 +135,9 @@ void Game::Update(Renderer *renderer) {
     
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    if(!isSlowingSpeed){
+      snake.speed += 0.02;
+    }
   }
 }
 
@@ -172,4 +184,10 @@ void Game::pause(){
 void Game::resume(){
   (*this).isGamePaused = false;
   std::cout << "Game Resumed : " << std::endl;
+}
+
+void TimerThread(Snake &snake, float actual) {
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    // get back to normal after 5 seconds
+    snake.speed = actual
 }

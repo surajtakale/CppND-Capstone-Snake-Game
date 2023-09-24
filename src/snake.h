@@ -18,10 +18,12 @@ class Snake {
 
   void GrowBody();
   bool SnakeCell(int x, int y);
+  void setSpeed(float speed);
 
   Direction direction = Direction::kUp;
 
   float speed{0.1f};
+  // float actual_speed;
   int size{1};
   bool alive{true};
   float head_x;
