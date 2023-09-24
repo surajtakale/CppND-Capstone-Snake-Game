@@ -91,7 +91,10 @@ To calculate the the time spent to eat the food and to calculate the points to t
 
 
 ### Concurrency
-
+This project is using concurrency by using threads library API's
+When a super Food is placed in the game and player eats that super food within 2 seconds the snake's speed will be reduced for 
+5 seconds and after time that it will resume the speed.
+for this, after super food is ate by snake in < 3 seconds, a thread will be spwanned and it will wait for 5 seconds and after that it will restore the original speed of the snake. [click here to see code](https://github.com/surajtakale/CppND-Capstone-Snake-Game/blob/master/src/game.cpp#L121)
 ## CC Attribution-ShareAlike 4.0 International
 
 
