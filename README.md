@@ -66,6 +66,7 @@ In this project, you can build your own C++ application or extend this Snake gam
     While playing the game if required player can pause the game by pressing the space bar and then again press the space bar the game will resume..!
 
 4. ADDED GAME OVER DIALOG BOX
+
     after game is finished the dialog box will automatically appear and will show the game details.
 
 ## CC Attribution-ShareAlike 4.0 International
