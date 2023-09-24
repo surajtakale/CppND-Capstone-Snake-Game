@@ -50,9 +50,13 @@ In this project, you can build your own C++ application or extend this Snake gam
     after 5 secondes the value of super food will be reduced to 1 point.
 
     if super food is ate  <= 1 sec then point will be 5
+
     if super food is ate 1 > & <= 2 sec then point will be 4
+
     if super food is ate 2 > & <= 3 sec then point will be 3
+
     if super food is ate 3 > & <= 4 sec then point will be 2
+    
     LIKEWISE...
 
 3. PLAYER CAN NOW PAUSE/RESUME THE GAME BY PRESSING THE SPACE BAR.
