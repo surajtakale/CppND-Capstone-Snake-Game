@@ -3,7 +3,13 @@
 #include "SDL.h"
 #include <chrono>
 #include "controller.h"
+#include <thread>
 
+void TimerThread(float *speed, float actual) {
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    // get back to normal after 5 seconds
+    *speed = actual;
+}
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -111,9 +117,9 @@ void Game::Update(Renderer *renderer) {
       // score = score + 2;
       auto new_score = calculateSuperFoodScore(superFoodPlacedOn);
       if(new_score > 3){
-        std::cout << "High Score achived in super food so reducing score..!" << std::endl;
-        std::thread affectSpeed(TimerThread, &snake, (snake.speed + 0.02));
-        snake.speed = 0.02;
+        std::cout << "High Score achived in super food so reducing speed..!" << std::endl;
+        std::thread affectSpeed(TimerThread, &snake.speed, (snake.speed + 0.02));
+        snake.speed = 0.1;
         isSlowingSpeed = true;
         affectSpeed.detach();
       }
@@ -186,8 +192,3 @@ void Game::resume(){
   std::cout << "Game Resumed : " << std::endl;
 }
 
-void TimerThread(Snake &snake, float actual) {
-    std::this_thread::sleep_for(std::chrono::seconds(5));
-    // get back to normal after 5 seconds
-    snake.speed = actual
-}
