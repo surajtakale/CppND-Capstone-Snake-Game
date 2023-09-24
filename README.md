@@ -49,6 +49,9 @@ In this project, you can build your own C++ application or extend this Snake gam
     accordingly after each second the points will be reduced by 1
     after 5 secondes the value of super food will be reduced to 1 point.
 
+3. Player Can Now Pause The Game By Pressing The SpaceBar.
+
+    While playing the game if required player can pause the game by pressing the space bar and then again press the space bar the game will resume..!
 
 ## CC Attribution-ShareAlike 4.0 International
 

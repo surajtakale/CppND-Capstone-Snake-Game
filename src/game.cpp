@@ -2,6 +2,8 @@
 #include <iostream>
 #include "SDL.h"
 #include <chrono>
+#include "controller.h"
+
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
@@ -24,8 +26,8 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     frame_start = SDL_GetTicks();
 
     // Input, Update, Render - the main game loop.
-    controller.HandleInput(running, snake);
-    Update();
+    controller.HandleInput(running, snake, *this);
+    Update(&renderer);
     renderer.Render(snake, food, isSuperFood);
 
     frame_end = SDL_GetTicks();
@@ -86,7 +88,11 @@ void Game::PlaceSuperFood() {
   }
 }
 
-void Game::Update() {
+void Game::Update(Renderer *renderer) {
+  if(isGamePaused){
+    (*renderer).setGamePausedTitle();
+    return;
+  }
   if (!snake.alive) return;
 
   snake.Update();
@@ -145,4 +151,25 @@ int Game::calculateSuperFoodScore(const std::shared_ptr<std::chrono::system_cloc
     // Calculate return the output value inversely proportional to the input
     
     return 6 - seconds;
+}
+
+
+void Game::pauseOrResumeGame(){
+  if((*this).isGamePaused)
+  { 
+    resume();
+  }else{
+    pause();
+    }
+}
+
+
+void Game::pause(){
+  (*this).isGamePaused = true;  
+  std::cout << "Game Paused : " << std::endl;
+}
+
+void Game::resume(){
+  (*this).isGamePaused = false;
+  std::cout << "Game Resumed : " << std::endl;
 }

@@ -11,16 +11,19 @@
 
 class Game {
  public:
+ friend class Controller;
   Game(std::size_t grid_width, std::size_t grid_height);
   void Run(Controller const &controller, Renderer &renderer,
            std::size_t target_frame_duration);
   int GetScore() const;
   int GetSize() const;
 
+  
  private:
   Snake snake;
   SDL_Point food;
   bool isSuperFood = false;
+  bool isGamePaused = false;
   std::shared_ptr<std::chrono::system_clock::time_point> superFoodPlacedOn; // = std::chrono::system_clock::now();
 
 
@@ -33,8 +36,11 @@ class Game {
 
   void PlaceFood();
   void PlaceSuperFood();
-  void Update();
+  void Update(Renderer *renderer);
   int calculateSuperFoodScore(const std::shared_ptr<std::chrono::system_clock::time_point>& timestamp);
+  void pauseOrResumeGame();
+  void pause();
+  void resume();
 
 };
 
