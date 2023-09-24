@@ -89,3 +89,11 @@ void Renderer::setGamePausedTitle(){
   std::string title{"PAUSED (press SPACE to resume the game.)"};
   SDL_SetWindowTitle(sdl_window, title.c_str());
 }
+void Renderer::ShowMessage(const char* title, const char* message) {
+    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+        SDL_Log("SDL initialization failed: %s", SDL_GetError());
+        return;
+    }
+    SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, title, message, NULL);
+    SDL_Quit();
+}
