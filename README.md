@@ -69,6 +69,29 @@ In this project, you can build your own C++ application or extend this Snake gam
 
     after game is finished the dialog box will automatically appear and will show the game details.
 
+## Rubric Points
+
+### Loops, Functions, I/O
+The Project is using Loops for operions and functions for implementing various functionalities.
+The Project is using I/O functionalies [click here](https://github.com/surajtakale/CppND-Capstone-Snake-Game/blob/master/src/metadata.cpp#L37) for taking input from user and displaying output.
+The Project is using File IO for Maintaining High Score achived by player.
+
+
+### Object Oriented Programming
+This is project is built using Object Oriented Programming (OOP)
+Each Class is represents blueprint or template for creating objects (instances). It defines the structure and behavior of objects of that type. A class encapsulates the data (attributes or properties) and methods (functions or behaviors) that the objects created from it will possess.
+Created a new class [MetaData](https://github.com/surajtakale/CppND-Capstone-Snake-Game/blob/master/src/metadata.h#L11)
+tha is used to store the metadata information like High Score on the file system. 
+
+### Memory Management
+This project is using memory management technique for efficient memory management
+Smart pointer are used to manage the the memory access in such a way thet memory will be utilized in a proper manner.
+When a super Food is placed in the game,
+To calculate the the time spent to eat the food and to calculate the points to the player used [shared_pointer](https://github.com/surajtakale/CppND-Capstone-Snake-Game/blob/master/src/game.cpp#L135).
+
+
+### Concurrency
+
 ## CC Attribution-ShareAlike 4.0 International
 
 
