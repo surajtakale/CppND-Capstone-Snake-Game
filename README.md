@@ -7,6 +7,8 @@ This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree P
 
 ## NEW VERSION
 <img src="snake_game.gif"/>
+<img src="game_over_dialog.png"/>
+<img src="game_over_with_high_score.png"/>
 
 The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
 
@@ -56,12 +58,15 @@ In this project, you can build your own C++ application or extend this Snake gam
     if super food is ate 2 > & <= 3 sec then point will be 3
 
     if super food is ate 3 > & <= 4 sec then point will be 2
-    
+
     LIKEWISE...
 
 3. PLAYER CAN NOW PAUSE/RESUME THE GAME BY PRESSING THE SPACE BAR.
 
     While playing the game if required player can pause the game by pressing the space bar and then again press the space bar the game will resume..!
+
+4. ADDED GAME OVER DIALOG BOX
+    after game is finished the dialog box will automatically appear and will show the game details.
 
 ## CC Attribution-ShareAlike 4.0 International
 
