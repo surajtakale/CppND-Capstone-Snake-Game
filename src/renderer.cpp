@@ -94,6 +94,8 @@ void Renderer::ShowMessage(const char* title, const char* message) {
         SDL_Log("SDL initialization failed: %s", SDL_GetError());
         return;
     }
+    std::cout << title << std::endl;
+    std::cout << message << std::endl;
     SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION, title, message, NULL);
     SDL_Quit();
 }
