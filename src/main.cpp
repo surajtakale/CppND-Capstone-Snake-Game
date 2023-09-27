@@ -26,7 +26,7 @@ int main() {
   std::cout << "Size: " << game.GetSize() << "\n";
   int player_score = game.GetScore();
   int high_score = meta.getHighScore();
-  const char* message = ("Score: " + std::to_string(game.GetScore()) + "\n Size: " + std::to_string(game.GetScore())).c_str();
+  const char* message = "Hello";//("Score: " + std::to_string(game.GetScore()) + "\n Size: " + std::to_string(game.GetScore())).c_str();
   if (player_score <= high_score)
   {
     std::cout << "current high score: " << high_score << "\n";
