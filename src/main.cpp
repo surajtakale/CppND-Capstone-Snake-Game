@@ -4,7 +4,7 @@
 #include "renderer.h"
 #include "metadata.h"
 #include "SDL.h"
-
+#include "string.h"
 
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
@@ -26,7 +26,8 @@ int main() {
   std::cout << "Size: " << game.GetSize() << "\n";
   int player_score = game.GetScore();
   int high_score = meta.getHighScore();
-  const char* message = "Hello";//("Score: " + std::to_string(game.GetScore()) + "\n Size: " + std::to_string(game.GetScore())).c_str();
+  std::string message = "Score: " + std::to_string(game.GetScore()) + "\n Size: " + std::to_string(game.GetScore()); //).c_str();
+  std::cout << message << std::endl;
   if (player_score <= high_score)
   {
     std::cout << "current high score: " << high_score << "\n";
