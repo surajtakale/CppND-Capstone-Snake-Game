@@ -4,8 +4,7 @@
 #include <vector>
 #include "SDL.h"
 #include "snake.h"
-#include "string.h"
-
+#include <string>
 class Renderer {
  public:
   Renderer(const std::size_t screen_width, const std::size_t screen_height,

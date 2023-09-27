@@ -4,8 +4,7 @@
 #include "renderer.h"
 #include "metadata.h"
 #include "SDL.h"
-#include "string.h"
-
+#include <string>
 int main() {
   constexpr std::size_t kFramesPerSecond{60};
   constexpr std::size_t kMsPerFrame{1000 / kFramesPerSecond};
