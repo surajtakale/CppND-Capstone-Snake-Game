@@ -4,6 +4,7 @@
 #include <vector>
 #include "SDL.h"
 #include "snake.h"
+#include "string.h"
 
 class Renderer {
  public:
@@ -14,7 +15,7 @@ class Renderer {
   void Render(Snake const snake, SDL_Point const &food, bool isSuperFood);
   void UpdateWindowTitle(int score, int fps);
   void setGamePausedTitle();
-  void ShowMessage(const char* title, const char* message);
+  void ShowMessage(const char* title, std::string message);
 
  private:
   SDL_Window *sdl_window;
